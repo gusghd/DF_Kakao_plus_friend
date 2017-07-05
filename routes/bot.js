@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/keyboard', (req, res) => {
     const menu = {
         type: 'text',
-        text: '서버를 쳐주세요'
+        message: '서버를 쳐주세요'
     };
 
     res.set({
