@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.get('/keyboard', (req, res) => {
     const menu = {
-        type: 'buttons',
-        buttons: ["카인", "시", "메뉴3", "카인", "시", "메뉴3", "카인", "시", "메뉴3"]
+        type: 'text',
+        text: '서버를 쳐주세요'
     };
 
     res.set({
@@ -16,15 +16,12 @@ router.get('/keyboard', (req, res) => {
 
 
 router.post('/message', (req, res) => {
-    console.log("req");
-    console.log(req);
-    console.log("res");
-    console.log(res);
     const _obj = {
         user_key: req.body.user_key,
         type: req.body.type,
         content: req.body.content
     };
+
     let massage = {
         "message": {
             "text": req.body.content
