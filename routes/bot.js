@@ -17,6 +17,7 @@ router.get('/keyboard', (req, res) => {
 
 
 router.post('/message', (req, res) => {
+    console.log(req.body);
     const _obj = {
         user_key: req.body.user_key,
         type: req.body.type,
