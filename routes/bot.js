@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/keyboard', (req, res) => {
     const menu = {
         type: 'buttons',
-        buttons: ["카인", "시", "메뉴3"]
+        buttons: ["카인", "시", "메뉴3", "카인", "시", "메뉴3", "카인", "시", "메뉴3"]
     };
 
     res.set({
@@ -14,7 +14,12 @@ router.get('/keyboard', (req, res) => {
     }).send(JSON.stringify(menu));
 });
 
+
 router.post('/message', (req, res) => {
+    console.log("req");
+    console.log(req);
+    console.log("res");
+    console.log(res);
     const _obj = {
         user_key: req.body.user_key,
         type: req.body.type,
@@ -22,7 +27,7 @@ router.post('/message', (req, res) => {
     };
     let massage = {
         "message": {
-            "text": '시간의문 20채널'
+            "text": req.body.content
         },
         "keyboard": {
             "type": "buttons",
@@ -36,6 +41,7 @@ router.post('/message', (req, res) => {
     res.set({
         'content-type': 'application/json'
     }).send(JSON.stringify(massage));
+    res.redirect('/message');
 });
 
 router.get('/', (req, res) => {
