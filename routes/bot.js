@@ -2,11 +2,12 @@
 const express = require('express');
 const router = express.Router();
 
+const serverList = ["카인", "시로코", "카시야스", "안톤", "디레지에", "프레이", "힐더", "바칼"];
 
 router.get('/keyboard', (req, res) => {
     const menu = {
-        type: 'text',
-        message: '서버를 쳐주세요'
+        type: 'buttons',
+        buttons: serverList
     };
 
     res.set({
@@ -24,7 +25,7 @@ router.post('/message', (req, res) => {
 
     let massage = {
         "message": {
-            "text": req.body.content
+            "text": req.body.content + req.body.type
         },
         "keyboard": {
             "type": "buttons",
