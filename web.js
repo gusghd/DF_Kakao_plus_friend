@@ -42,3 +42,7 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+app.listen(8001, function() {
+  console.log('Connected 8001 port!!!');
+});

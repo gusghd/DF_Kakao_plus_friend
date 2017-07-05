@@ -9,9 +9,9 @@ router.get('/keyboard', (req, res) => {
         buttons: ["메뉴1", "메뉴2", "메뉴3"]
     };
 
-res.set({
-    'content-type': 'application/json'
-}).send(JSON.stringify(menu));
+    res.set({
+        'content-type': 'application/json'
+    }).send(JSON.stringify(menu));
 });
 
 router.get('/', (req, res) => {
