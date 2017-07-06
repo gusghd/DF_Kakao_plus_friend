@@ -45,7 +45,7 @@ router.post('/message', (req, res) => {
         } else {
             selectedChannel = bot.choseChannel(server);
             message.message = {
-                "text" : req.body.content + "의 추천채널은 " + selectedChannel +"입니다. \n뜬다면 메가폰 한번 날려줘요! ^^",
+                "text" : req.body.content + "의 추천채널은\n" + selectedChannel +"\n입니다. \n뜬다면 메가폰 한번 날려줘요! ^^",
                 "photo" : {
                     "url": "http://hell.cafe24app.com/images/beam.jpg",
                     "width": 640,
