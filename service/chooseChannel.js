@@ -64,7 +64,7 @@ const diresie = [
     "일반 15채널", "일반 16채널", "경매장 33채널", "경매장 34채널"
 ];
 
-let Bot;
+let Bot = {};
 
 Bot.choseChannel = (server) => {
     let tempArray = sharedChannel;
