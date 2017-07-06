@@ -43,15 +43,17 @@ router.post('/message', (req, res) => {
             massage.keyboard = {"type": "text"};
         } else {
             selectedChannel = bot.choseChannel(server);
-            massage.massage.text = req.body.content + "의 추천채널은 " + selectedChannel +"입니다. \n뜬다면 메가폰 한번 날려줘요! ^^";
+            massage.massage = {
+                "text" : req.body.content + "의 추천채널은 " + selectedChannel +"입니다. \n뜬다면 메가폰 한번 날려줘요! ^^",
+                "photo" : {
+                    "url": "http://hell.cafe24app.com/images/beam.png",
+                    "width": 640,
+                    "height": 480
+                }
+            };
             massage.keyboard = {
                 "type": "buttons",
                 "buttons": serverList
-            };
-            massage.massage.photo = {
-                "url": "http://hell.cafe24app.com/images/beam.png",
-                "width": 640,
-                "height": 480
             };
             server = undefined;
         }
