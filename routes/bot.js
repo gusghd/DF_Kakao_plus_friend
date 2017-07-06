@@ -24,7 +24,7 @@ router.post('/message', (req, res) => {
     console.log("=======================================================");
     console.log(req.body.content);
     console.log("=======================================================");
-    console.log(res);
+   // console.log(res);
     const _obj = {
         user_key: req.body.user_key,
         type: req.body.type,
@@ -50,6 +50,10 @@ router.post('/message', (req, res) => {
                     "url": "http://hell.cafe24app.com/images/beam.jpg",
                     "width": 640,
                     "height": 480
+                },
+                "message_button": {
+                    "label": "라벨입니다",
+                    "url": "https://cheese10yun.github.io/"
                 }
             };
             massage.keyboard = {
