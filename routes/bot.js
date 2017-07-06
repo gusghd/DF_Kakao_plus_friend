@@ -29,7 +29,10 @@ router.post('/message', (req, res) => {
         type: req.body.type,
         content: req.body.content
     };
-    let massage = {};
+    let massage = {
+        "message":{},
+        "keyboard": {}
+    };
     let selectedChannel = "";
 
 
@@ -39,7 +42,6 @@ router.post('/message', (req, res) => {
             massage.message.text = "아이템을 입력해주세요";
             massage.keyboard = {"type": "text"};
         } else {
-            massage.massage = {};
             selectedChannel = bot.choseChannel(server);
             massage.massage.text = req.body.content + "의 추천채널은 " + selectedChannel +"입니다. \n뜬다면 메가폰 한번 날려줘요! ^^";
             massage.keyboard = {
