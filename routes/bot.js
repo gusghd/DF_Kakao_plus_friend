@@ -24,12 +24,16 @@ router.post('/message', (req, res) => {
         type: req.body.type,
         content: req.body.content
     };
+    let textContent = req.body.content;
     if(!server) {
         server = req.body.content;
+        textContent = "아이템을 입력해주세요"
+    } else {
+        textContent = req.body.content + "는 시간의문 20채 !! 나오면 뽀찌주세요 ^^"
     }
     let massage = {
         "message": {
-            "text": req.body.content + req.body.type
+            "text": textContent
         },
         "keyboard": {
             "type": "text"
