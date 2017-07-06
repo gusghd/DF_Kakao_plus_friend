@@ -32,11 +32,12 @@ router.post('/message', (req, res) => {
         textContent = "아이템을 입력해주세요";
         keyboard =  {"type": "text"};
     } else {
-        textContent = req.body.content + "의 추천채널은" + +" \n나오면 뽀찌주세요 ^^"
+        textContent = req.body.content + "의 추천채널은" + +" \n나오면 뽀찌주세요 ^^";
         keyboard = {
             "type": "buttons",
             "buttons": serverList
         }
+        server = undefined;
     }
     let massage = {
         "message": {
