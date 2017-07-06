@@ -1,5 +1,6 @@
 
 const express = require('express');
+const fs = require('fs');
 const router = express.Router();
 const bot = require('../service/chooseChannel');
 
@@ -46,7 +47,7 @@ router.post('/message', (req, res) => {
             massage.massage = {
                 "text" : req.body.content + "의 추천채널은 " + selectedChannel +"입니다. \n뜬다면 메가폰 한번 날려줘요! ^^",
                 "photo" : {
-                    "url": "images/beam.png",
+                    "url": "http://hell.cafe24app.com/images/beam.png",
                     "width": 640,
                     "height": 480
                 }
@@ -65,6 +66,20 @@ router.post('/message', (req, res) => {
     }).send(JSON.stringify(massage));
     res.redirect('/message');
 
+});
+
+router.get('/images/:name',function (req,res){
+    var filename = req.params.name;
+    console.log(__dirname+'/images/'+filename);
+    fs.exists(__dirname+'/images/'+filename, function (exists) {
+        if (exists) {
+            fs.readFile(__dirname+'/images/'+filename, function (err,data){
+                res.end(data);
+            });
+        } else {
+            res.end('file is not exists');
+        }
+    })
 });
 
 /*router.post('/friend', checkUserKey, (req, res) => {
