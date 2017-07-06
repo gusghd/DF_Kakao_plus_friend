@@ -22,7 +22,7 @@ router.post('/message', (req, res) => {
     console.log("=======================================================");
     console.log(req.body.content);
     console.log("=======================================================");
-    console.log(req.body.type);
+    console.log(res);
     const _obj = {
         user_key: req.body.user_key,
         type: req.body.type,
