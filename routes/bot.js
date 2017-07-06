@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const serverList = ["카인", "시로코", "카시야스", "안톤", "디레지에", "프레이", "힐더", "바칼"];
+
 let server;
 
 router.get('/keyboard', (req, res) => {
@@ -25,19 +26,23 @@ router.post('/message', (req, res) => {
         content: req.body.content
     };
     let textContent = req.body.content;
+    let keyboard;
     if(!server) {
         server = req.body.content;
-        textContent = "아이템을 입력해주세요"
+        textContent = "아이템을 입력해주세요";
+        keyboard =  {"type": "text"};
     } else {
-        textContent = req.body.content + "는 시간의문 20채 !! 나오면 뽀찌주세요 ^^"
+        textContent = req.body.content + "의 추천채널은" + +" \n나오면 뽀찌주세요 ^^"
+        keyboard = {
+            "type": "buttons",
+            "buttons": serverList
+        }
     }
     let massage = {
         "message": {
             "text": textContent
         },
-        "keyboard": {
-            "type": "text"
-        }
+        "keyboard": keyboard
     };
     res.set({
         'content-type': 'application/json'
