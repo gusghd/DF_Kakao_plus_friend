@@ -21,10 +21,6 @@ router.get('/keyboard', (req, res) => {
 
 
 router.post('/message', (req, res) => {
-    console.log("=======================================================");
-    console.log(req.body.content);
-    console.log("=======================================================");
-   // console.log(res);
     const _obj = {
         user_key: req.body.user_key,
         type: req.body.type,
@@ -37,16 +33,27 @@ router.post('/message', (req, res) => {
     let selectedChannel = "";
 
 
-    if(req.body.type == "text") {
-        if (!server) {
+
+    if (!server) {
+        if(req.body.type == "text") {
             server = req.body.content;
             message.message.text = "아이템을 입력해주세요";
             message.keyboard = {"type": "text"};
         } else {
+            message.message.text = "잘못된 타입의 값입니다. \n버튼을 눌러주세요.";
+            message.keyboard = {
+                "type": "buttons",
+                "buttons": serverList
+            };
+        }
+    } else {
+        if(req.body.type == "text") {
             selectedChannel = bot.choseChannel(server);
             message.message = {
-                "text" : req.body.content + "의 추천채널은\n" + selectedChannel +"\n입니다. \n뜬다면 메가폰 한번 날려줘요! ^^",
-                "photo" : {
+                "text": req.body.content + "의 추천채널은\n" +
+                selectedChannel +
+                "\n입니다. \n뜬다면 메가폰 한번 날려주세요~^^\n 문의/요청사항 혹은 인증샷은 awesome_play@naver.com으로 보내주세요.",
+                "photo": {
                     "url": "http://hell.cafe24app.com/images/beam.jpg",
                     "width": 640,
                     "height": 480
@@ -57,10 +64,14 @@ router.post('/message', (req, res) => {
                 "buttons": serverList
             };
             server = undefined;
+        } else {
+            message.message = {
+                "text": "잘못된 타입의 값입니다. \n문자를 입력해주세요."
+            };
+            message.keyboard = {"type": "text"};
         }
-    } else {
-        message.message.text = "잘못된 타입의 데이터입니다."
     }
+
     res.set({
         'content-type': 'application/json'
     }).send(JSON.stringify(message));
