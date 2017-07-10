@@ -13,9 +13,8 @@ router.get('/keyboard', (req, res) => {
         type: 'buttons',
         buttons: serverList
     };
-
     res.set({
-        'content-type': 'application/json'
+        'content-type': 'application/json; charset=utf-8'
     }).send(JSON.stringify(menu));
 });
 
@@ -49,7 +48,7 @@ router.post('/message', (req, res) => {
     } else {
         if(req.body.type == "text") {
           console.log("=============================================================================");
-          console.log(req.body.content);
+          console.log(req.body.content + " // " + new Date());
           console.log("=============================================================================");
             selectedChannel = bot.choseChannel(server);
             message.message = {
