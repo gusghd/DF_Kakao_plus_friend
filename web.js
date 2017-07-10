@@ -3,7 +3,8 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
+const http = require('http');
 
 var bot = require('./routes/bot');
 
@@ -19,13 +20,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', bot);
-/*
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src/index.html'));
-});*/
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
 
 
 // catch 404 and forward to error handler
@@ -48,6 +49,13 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-app.listen(8001, function() {
+/*app.listen(8001, function() {
   console.log('Connected 8001  port!!!');
-});
+});*/
+
+const port = process.env.PORT || '8001';
+app.set('port', port);
+
+const server = http.createServer(app);
+
+server.listen(port, () => console.log(`API running on localhost:${port}`));
