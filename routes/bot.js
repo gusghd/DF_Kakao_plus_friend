@@ -96,6 +96,10 @@ router.get('/images/:name',function (req,res){
     })
 });
 
+router.get('/',function (req,res){
+    res.end('Api is working');
+});
+
 /*router.post('/friend', checkUserKey, (req, res) => {
     const user_key = req.body.user_key;
     console.log(`${user_key}님이 쳇팅방에 참가했습니다.`);
