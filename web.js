@@ -5,12 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const http = require('http');
-const cors = require('cors')();
+
 
 var bot = require('./routes/bot');
 
 var app = express();
-app.use(cors);
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -19,20 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-var allowCORS = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-  (req.method === 'OPTIONS') ?
-      res.send(200) :
-      next();
-};
-
-// 이 부분은 app.use(router) 전에 추가하도록 하자
-app.use(allowCORS);
-
 
 app.use('/', bot);
 
