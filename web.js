@@ -47,8 +47,6 @@ module.exports = app;
   console.log('Connected 8001  port!!!');
 });*/
 
-
-
 const port = process.env.PORT || '8001';
 app.set('port', port);
 
