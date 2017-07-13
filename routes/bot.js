@@ -7,8 +7,7 @@ const bot = require('../service/chooseChannel');
 
 const serverList = ["카인", "시로코", "카시야스", "안톤", "디레지에", "프레이", "힐더", "바칼"];
 
-let app = express();
-app.use(cors);
+router.use(cors);
 
 let server;
 
