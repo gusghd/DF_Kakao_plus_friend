@@ -12,7 +12,9 @@ var bot = require('./routes/bot');
 var app = express();
 
 app.use(cors);
-
+app.use((req, res) => {
+  res.header('Access-Control-Allow-Origin', '*')
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

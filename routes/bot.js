@@ -16,8 +16,7 @@ router.get('/keyboard', (req, res) => {
         buttons: serverList
     };
     res.set({
-        'content-type': 'application/json; charset=utf-8',
-        'Access-Control-Allow-Origin': '*'
+        'content-type': 'application/json; charset=utf-8'
     }).send(JSON.stringify(menu));
 });
 
