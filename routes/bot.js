@@ -1,13 +1,12 @@
 
 const express = require('express');
-const cors = require('cors')();
+
 const fs = require('fs');
 const router = express.Router();
 const bot = require('../service/chooseChannel');
 
 const serverList = ["카인", "시로코", "카시야스", "안톤", "디레지에", "프레이", "힐더", "바칼"];
 
-router.use(cors);
 
 let server;
 
