@@ -52,6 +52,7 @@ router.post('/message', (req, res) => {
           console.log("=============================================================================");
           console.log(req.body.content + " // " + new Date());
           console.log("=============================================================================");
+            console.log("==================server===========>" + server);
             selectedChannel = bot.choseChannel(server);
             console.log("==================server===========>" + server);
             message.message = {

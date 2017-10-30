@@ -67,7 +67,7 @@ let Bot = {};
 Bot.choseChannel = (server) => {
     let tempArray = sharedChannel;
     let selectedChannel;
-
+    console.log(server);
     switch (server) {
         case "디레지에" :
             for(let item of diresie) {
