@@ -49,6 +49,7 @@ router.post('/message', (req, res) => {
         }
     } else {
         if(req.body.type == "text") {
+            console.log("==================server===========>" + server);
           console.log("=============================================================================");
           console.log(req.body.content + " // " + new Date());
           console.log("=============================================================================");
@@ -78,10 +79,10 @@ router.post('/message', (req, res) => {
         }
     }
 
-    /*res.set({
+    res.set({
         'content-type': 'application/json'
-    }).send(JSON.stringify(message));*/
-    res.redirect('/message');
+    }).send(JSON.stringify(message));
+    //res.redirect('/message');
 
 });
 
