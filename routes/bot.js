@@ -78,9 +78,9 @@ router.post('/message', (req, res) => {
         }
     }
 
-    res.set({
+    /*res.set({
         'content-type': 'application/json'
-    }).send(JSON.stringify(message));
+    }).send(JSON.stringify(message));*/
     res.redirect('/message');
 
 });
