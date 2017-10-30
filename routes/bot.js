@@ -53,6 +53,7 @@ router.post('/message', (req, res) => {
           console.log(req.body.content + " // " + new Date());
           console.log("=============================================================================");
             selectedChannel = bot.choseChannel(server);
+            console.log("==================server===========>" + server);
             message.message = {
                 "text": req.body.content + "의 추천채널은\n" +
                 selectedChannel +
